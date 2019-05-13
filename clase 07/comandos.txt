@@ -1,0 +1,2 @@
+primero : npm init;
+segundo : npm install --save @types/jquery

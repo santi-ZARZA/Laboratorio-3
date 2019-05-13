@@ -1,0 +1,88 @@
+1º:
+
+primero tenemos que descomentar en el 'tsconfig.json' las opciones '"baseUrl"' y '"paths"'. despues de hacerlo lo anterior tenemos que designar en la opcion de '"paths"' una ruta a donde se guardara las librerias que descarguemos de jquery, para esto creamos un 'json' como este (Ejemplo):
+
+	"paths": { "jquery" : ["libs/jquery/"]}
+
+	( esta instruccion de arriba marcara donde se guardaran todas las cosas que descarguemos con respecto 	  a jquery )
+
+2º:
+
+despues tendremos 2 opciones :
+
+(A)---> Descargar de la pagina el framework de jquery con la version que eligamos.
+
+(B)---> Usar la consola para descargar el framework de jquery y poder utilizarlo.
+
+--------------------------------------------------nota--------------------------------------------------
+
+en el caso de la opcion (B) tendremos que incluir un <script> en el HTML, apuntando a la pagina de jquery, buscamos el '.js' de jquery con la *version que elijamos.
+
+en el caso de la opcion (A) creo que podemos evitar esto si descargarmos el framework, con la ventaja de que podremos seguir utilizando la funcionalidad de jquery aun sin internet y sin la necesidad de inncluir ningun <script> en el HTML
+
+---------------------------------------------------------------------------------------------------------
+
+(B):
+
+vamos a tener que estar parados en la carpeta donde querramos instalar jquery, estando dentro de la carpeta tiraremos el primer comando:
+
+npm init
+-----------------------------------------------------------------------------------------------------------
+primero: nombre de la carpeta que se llamara donde guardemos jquery (Ejemplo : "testjquery")
+segundo: nos pedira la version que utilizaremos (por defecto nos dara la 1.0.0)
+tercero: nos pedira una descripcion 
+******************************************************************************************************
+*** Apartir de aca se puede solo dar enter hasta que se terminen los '****' que puse *****
+******************************************************************************************************
+
+cuarto: nos pedira punto de entrada (osea que archivo .js es al cual sera vinculado, por defecto es index.js)
+quinto: nos pedira un comando de testeo (ni idea a que se refiere)
+sexto: nos pedira un repositorio de GITHUB al cual mandara todo
+septimo: nos pedira 'palabras claves' ( repito : ni idea a que se refiere )
+octavo: nos pide un autor
+noveno: nos pide un tipo de Licencia (por defecto va a ir 'ISC')
+*******************************************************************************************************
+
+al finalizar de ingresar todos los datos, nos va a mostrar el json que va a crear.
+de poner en la pregunta "is this OK?" yes creara el 'package.json' con todos los datos que le dimos anteriormente, caso contrario abortara la creacion del archivo.
+
+-----------------------------------------------------------------------------------------------------------
+
+despues tiramos el segundo comando:
+
+npm install --save @types/jquery
+-----------------------------------------------------------------------------------------------------------
+
+cuando tiramos este comando dejamos que descargue todos los archivos de jquery que tiene que descargar
+
+------------------------------------------------------------------------------------------------------------
+
+
+///////////////////////////////////////////////( nota )\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+puede que al tira los comandos se descarguen en una carpeta llamada 'node_modules/' y un 'archivo-lock.json'
+
+					     (((recomendacion)))
+
+solo hay que tirar todo esto a donde querramos que este, (ejemplo : queremos que este en 'libs/jquery/' tiramos todo alli y listo)
+/////////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+despues habria que que incluir la referencia del archivo 'index.d.ts' el cual contiene todas las referencias a las funciones de jquery
+
+se pondria asi:
+
+/// <reference path="./libs/jquery/index.d.ts" />
+
+
+y listo :)
+
+
+////////////////////////////////////////////////( nota )\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+si nos paso de de la carpeta 'node_modules/' vamos a tener que marcar toda la ruta, asi:
+
+
+/// <reference path="./libs/jquery/node_modules/@types/jquery/index.d.ts" />
+
+
